@@ -166,6 +166,27 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
 
 .counter-wrap { display: flex; align-items: center; gap: 8px; }
 
+/* ── Sliders ── */
+.slider-row { margin-bottom: 10px; }
+.slider-row:last-child { margin-bottom: 0; }
+.slider-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+input[type=range] {
+  width: 100%; -webkit-appearance: none; appearance: none;
+  height: 4px; border-radius: 2px; background: #e0e4eb;
+  outline: none; cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #ff6b1a; cursor: pointer;
+  box-shadow: 0 1px 6px rgba(255,107,26,0.35);
+}
+input[type=range]::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #ff6b1a; cursor: pointer;
+  border: none; box-shadow: 0 1px 6px rgba(255,107,26,0.35);
+}
+
 /* ── Store cards ── */
 .store-card {
   background: #fff; border-radius: 10px;
@@ -285,32 +306,30 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
           <div class="lbl">1st period base<small>40 hrs × 2 wks</small></div>
           <div class="auto-val" id="p1-base">$1,480</div>
         </div>
-        <div class="row">
-          <div class="lbl">1st period demos</div>
-          <div class="counter-wrap">
-            <span class="rate-badge" id="ba-s1-rate">$50/demo</span>
-            <div class="counter">
-              <button onclick="adj('s1',-1)">−</button>
-              <div class="cv" id="s1-val">0</div>
-              <button onclick="adj('s1',1)">+</button>
+        <div class="slider-row">
+          <div class="slider-top">
+            <div class="lbl">1st period demos</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="rate-badge" id="ba-s1-rate">$50/demo</span>
+              <span class="cv" id="s1-val">0</span>
             </div>
           </div>
+          <input type="range" min="0" max="25" step="1" value="0" oninput="setVal('s1',this.value)" />
         </div>
         <hr class="period-divider" />
         <div class="row">
           <div class="lbl">2nd period base<small>40 hrs × 2 wks</small></div>
           <div class="auto-val" id="p2-base">$1,480</div>
         </div>
-        <div class="row">
-          <div class="lbl">2nd period demos</div>
-          <div class="counter-wrap">
-            <span class="rate-badge" id="ba-s2-rate">$50/demo</span>
-            <div class="counter">
-              <button onclick="adj('s2',-1)">−</button>
-              <div class="cv" id="s2-val">0</div>
-              <button onclick="adj('s2',1)">+</button>
+        <div class="slider-row">
+          <div class="slider-top">
+            <div class="lbl">2nd period demos</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="rate-badge" id="ba-s2-rate">$50/demo</span>
+              <span class="cv" id="s2-val">0</span>
             </div>
           </div>
+          <input type="range" min="0" max="25" step="1" value="0" oninput="setVal('s2',this.value)" />
         </div>
         <hr class="period-divider" />
         <div class="row">
@@ -321,13 +340,12 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
 
       <div class="card">
         <div class="card-title">Monthly Sales</div>
-        <div class="row">
-          <div class="lbl">Total sales closed</div>
-          <div class="counter">
-            <button onclick="adj('sales',-1)">−</button>
-            <div class="cv" id="sales-val">0</div>
-            <button onclick="adj('sales',1)">+</button>
+        <div class="slider-row">
+          <div class="slider-top">
+            <div class="lbl">Total sales closed</div>
+            <span class="cv" id="sales-val">0</span>
           </div>
+          <input type="range" min="0" max="25" step="1" value="0" oninput="setVal('sales',this.value)" />
         </div>
       </div>
     </div><!-- end ba-layout -->
@@ -356,32 +374,30 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
               <div class="lbl">1st period base<small>40 hrs × 2 wks</small></div>
               <div class="auto-val" id="tl-p1-base">$1,480</div>
             </div>
-            <div class="row">
-              <div class="lbl">1st period demos</div>
-              <div class="counter-wrap">
-                <span class="rate-badge" id="tl-s1-rate">$60/demo</span>
-                <div class="counter">
-                  <button onclick="adj('ts1',-1)">−</button>
-                  <div class="cv" id="ts1-val">0</div>
-                  <button onclick="adj('ts1',1)">+</button>
+            <div class="slider-row">
+              <div class="slider-top">
+                <div class="lbl">1st period demos</div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span class="rate-badge" id="tl-s1-rate">$60/demo</span>
+                  <span class="cv" id="ts1-val">0</span>
                 </div>
               </div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setVal('ts1',this.value)" />
             </div>
             <hr class="period-divider" />
             <div class="row">
               <div class="lbl">2nd period base<small>40 hrs × 2 wks</small></div>
               <div class="auto-val" id="tl-p2-base">$1,480</div>
             </div>
-            <div class="row">
-              <div class="lbl">2nd period demos</div>
-              <div class="counter-wrap">
-                <span class="rate-badge" id="tl-s2-rate">$60/demo</span>
-                <div class="counter">
-                  <button onclick="adj('ts2',-1)">−</button>
-                  <div class="cv" id="ts2-val">0</div>
-                  <button onclick="adj('ts2',1)">+</button>
+            <div class="slider-row">
+              <div class="slider-top">
+                <div class="lbl">2nd period demos</div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span class="rate-badge" id="tl-s2-rate">$60/demo</span>
+                  <span class="cv" id="ts2-val">0</span>
                 </div>
               </div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setVal('ts2',this.value)" />
             </div>
             <hr class="period-divider" />
             <div class="row">
@@ -392,13 +408,12 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
 
           <div class="card">
             <div class="card-title">Monthly Sales</div>
-            <div class="row">
-              <div class="lbl">Total sales closed</div>
-              <div class="counter">
-                <button onclick="adj('tsales',-1)">−</button>
-                <div class="cv" id="tsales-val">0</div>
-                <button onclick="adj('tsales',1)">+</button>
+            <div class="slider-row">
+              <div class="slider-top">
+                <div class="lbl">Total sales closed</div>
+                <span class="cv" id="tsales-val">0</span>
               </div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setVal('tsales',this.value)" />
             </div>
           </div>
         </div><!-- end col-personal -->
@@ -414,13 +429,13 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
               <input class="store-name-input" id="store-name-0" value="Store 1" placeholder="Store name" />
               <div class="store-bonus-tag" id="store-tag-0">No bonus</div>
             </div>
-            <div class="row">
-              <div class="lbl">Demos</div>
-              <div class="counter"><button onclick="adjStore(0,'d',-1)">−</button><div class="cv" id="st0-d">0</div><button onclick="adjStore(0,'d',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Demos</div><span class="cv" id="st0-d">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(0,'d',this.value)" />
             </div>
-            <div class="row">
-              <div class="lbl">Sales</div>
-              <div class="counter"><button onclick="adjStore(0,'s',-1)">−</button><div class="cv" id="st0-s">0</div><button onclick="adjStore(0,'s',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Sales</div><span class="cv" id="st0-s">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(0,'s',this.value)" />
             </div>
           </div>
 
@@ -429,13 +444,13 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
               <input class="store-name-input" id="store-name-1" value="Store 2" placeholder="Store name" />
               <div class="store-bonus-tag" id="store-tag-1">No bonus</div>
             </div>
-            <div class="row">
-              <div class="lbl">Demos</div>
-              <div class="counter"><button onclick="adjStore(1,'d',-1)">−</button><div class="cv" id="st1-d">0</div><button onclick="adjStore(1,'d',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Demos</div><span class="cv" id="st1-d">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(1,'d',this.value)" />
             </div>
-            <div class="row">
-              <div class="lbl">Sales</div>
-              <div class="counter"><button onclick="adjStore(1,'s',-1)">−</button><div class="cv" id="st1-s">0</div><button onclick="adjStore(1,'s',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Sales</div><span class="cv" id="st1-s">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(1,'s',this.value)" />
             </div>
           </div>
 
@@ -444,13 +459,13 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
               <input class="store-name-input" id="store-name-2" value="Store 3" placeholder="Store name" />
               <div class="store-bonus-tag" id="store-tag-2">No bonus</div>
             </div>
-            <div class="row">
-              <div class="lbl">Demos</div>
-              <div class="counter"><button onclick="adjStore(2,'d',-1)">−</button><div class="cv" id="st2-d">0</div><button onclick="adjStore(2,'d',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Demos</div><span class="cv" id="st2-d">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(2,'d',this.value)" />
             </div>
-            <div class="row">
-              <div class="lbl">Sales</div>
-              <div class="counter"><button onclick="adjStore(2,'s',-1)">−</button><div class="cv" id="st2-s">0</div><button onclick="adjStore(2,'s',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Sales</div><span class="cv" id="st2-s">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(2,'s',this.value)" />
             </div>
           </div>
 
@@ -459,13 +474,13 @@ input[type=number]:focus { outline: none; border-color: #ff6b1a; }
               <input class="store-name-input" id="store-name-3" value="Store 4" placeholder="Store name" />
               <div class="store-bonus-tag" id="store-tag-3">No bonus</div>
             </div>
-            <div class="row">
-              <div class="lbl">Demos</div>
-              <div class="counter"><button onclick="adjStore(3,'d',-1)">−</button><div class="cv" id="st3-d">0</div><button onclick="adjStore(3,'d',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Demos</div><span class="cv" id="st3-d">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(3,'d',this.value)" />
             </div>
-            <div class="row">
-              <div class="lbl">Sales</div>
-              <div class="counter"><button onclick="adjStore(3,'s',-1)">−</button><div class="cv" id="st3-s">0</div><button onclick="adjStore(3,'s',1)">+</button></div>
+            <div class="slider-row">
+              <div class="slider-top"><div class="lbl">Sales</div><span class="cv" id="st3-s">0</span></div>
+              <input type="range" min="0" max="25" step="1" value="0" oninput="setStore(3,'s',this.value)" />
             </div>
           </div>
         </div><!-- end col-stores -->
@@ -535,14 +550,14 @@ function setRole(r) {
   recalc();
 }
 
-function adj(k, d) {
-  st[k] = Math.max(0, st[k] + d);
+function setVal(k, v) {
+  st[k] = parseInt(v);
   document.getElementById(k+'-val').textContent = st[k];
   recalc();
 }
 
-function adjStore(i, key, d) {
-  stores[i][key] = Math.max(0, stores[i][key] + d);
+function setStore(i, key, v) {
+  stores[i][key] = parseInt(v);
   document.getElementById('st'+i+'-'+key).textContent = stores[i][key];
   recalc();
 }
